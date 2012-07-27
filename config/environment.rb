@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 Pong::Application.initialize!
 
 require 'elo_ratings'
-EloRatings.players
+EloRatings.players if ActiveRecord::Base.connection.table_exists?('matches') && ActiveRecord::Base.connection.table_exists?('players')
